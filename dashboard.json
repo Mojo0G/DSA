@@ -1,7 +1,7 @@
 {
   "metadata": {
     "totalProblems": 7,
-    "lastUpdated": "2025-08-26T17:12:26.215Z",
+    "lastUpdated": "2025-08-26T17:14:48.234Z",
     "breakdown": {
       "Codechef": {
         "total": 1,
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.076Z"
+      "lastUpdated": "2025-08-26T17:14:48.064Z"
     },
     {
       "id": "hackerrank-medium-simple-array-sum",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.089Z"
+      "lastUpdated": "2025-08-26T17:14:48.077Z"
     },
     {
       "id": "leetcode-easy-two-sum",
@@ -76,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.081Z"
+      "lastUpdated": "2025-08-26T17:14:48.069Z"
     },
     {
       "id": "leetcode-medium-container-with-most-water",
@@ -92,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.083Z"
+      "lastUpdated": "2025-08-26T17:14:48.071Z"
     },
     {
       "id": "leetcode-medium-find-first-and-last-position-of-element-in-sorted-array",
@@ -108,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.084Z"
+      "lastUpdated": "2025-08-26T17:14:48.072Z"
     },
     {
       "id": "leetcode-hard-median-of-two-sorted-arrays",
@@ -119,12 +119,12 @@
       "files": {
         "code": "class Solution {\npublic:\n    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n        // Get the sizes of both input arrays.\n        int n = nums1.size();\n        int m = nums2.size();\n\n        // Merge the arrays into a single sorted array.\n        vector<int> merged;\n        for (int i = 0; i < n; i++) {\n            merged.push_back(nums1[i]);\n        }\n        for (int i = 0; i < m; i++) {\n            merged.push_back(nums2[i]);\n        }\n\n        // Sort the merged array.\n        sort(merged.begin(), merged.end());\n\n        // Calculate the total number of elements in the merged array.\n        int total = merged.size();\n\n        if (total % 2 == 1) {\n            // If the total number of elements is odd, return the middle element as the median.\n            return static_cast<double>(merged[total / 2]);\n        } else {\n            // If the total number of elements is even, calculate the average of the two middle elements as the median.\n            int middle1 = merged[total / 2 - 1];\n            int middle2 = merged[total / 2];\n            return (static_cast<double>(middle1) + static_cast<double>(middle2)) / 2.0;\n        }\n    }\n};",
         "readme": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.\n\nThe overall run time complexity should be O(log (m+n)).\n\n \nExample 1:\n\nInput: nums1 = [1,3], nums2 = [2]\nOutput: 2.00000\nExplanation: merged array = [1,2,3] and median is 2.\n\n\nExample 2:\n\nInput: nums1 = [1,2], nums2 = [3,4]\nOutput: 2.50000\nExplanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.\n\n\n \nConstraints:\n\n\n\tnums1.length == m\n\tnums2.length == n\n\t0 <= m <= 1000\n\t0 <= n <= 1000\n\t1 <= m + n <= 2000\n\t-106 <= nums1[i], nums2[i] <= 106",
-        "notes": "# Median of Two Sorted Arrays\n\n          **Summary:** The code utilizes vectors (dynamic arrays) to store and manipulate input and merged arrays. It first merges two sorted input vectors, `nums1` and `nums2`, into a single vector `merged`. Then, it sorts `merged` and determines the median based on whether the total number of elements is odd or even.  If odd, the middle element is the median; if even, the average of the two middle elements is the median.\n\n          - Time Complexity: O(m+n log(m+n)). Merging the two arrays takes O(m+n) time. Sorting the merged array takes O((m+n)log(m+n)) time, which dominates the overall time complexity.\n          - Space Complexity: O(m+n). This is due to the creation of the `merged` vector, which stores all elements from both input arrays. The space used is proportional to the sum of sizes of the input arrays."
+        "notes": "# Median of Two Sorted Arrays\n\n          **Summary:** The code uses vectors (dynamic arrays) to store and manipulate input and merged arrays. It first merges two input sorted arrays into a single vector, then sorts the merged vector. Finally, it determines the median based on whether the total number of elements is odd or even, returning the middle element or the average of the two middle elements, respectively.\n\n          - Time Complexity: O(m+n+k log k), where m and n are the lengths of input arrays and k = m+n. This is because merging takes O(m+n), sorting takes O(k log k), and the rest of the operations are O(1). In the worst-case scenario, where both input arrays are unsorted, the sorting step dominates.\n          - Space Complexity: O(m+n), because a new vector 'merged' of size m+n is created to store the combined elements of the two input arrays. This is a linear space complexity."
       },
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.086Z"
+      "lastUpdated": "2025-08-26T17:14:48.074Z"
     },
     {
       "id": "leetcode-hard-permutation-sequence",
@@ -140,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:12:26.087Z"
+      "lastUpdated": "2025-08-26T17:14:48.075Z"
     }
   ]
 }
