@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "totalProblems": 5,
-    "lastUpdated": "2025-08-26T14:51:24.570Z",
+    "totalProblems": 6,
+    "lastUpdated": "2025-08-26T15:07:26.937Z",
     "breakdown": {
       "Codechef": {
         "total": 1,
@@ -16,9 +16,9 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 3,
+        "total": 4,
         "Easy": 1,
-        "Medium": 1,
+        "Medium": 2,
         "Hard": 1
       },
       "Hackerrank": {
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T14:51:24.403Z"
+      "lastUpdated": "2025-08-26T15:07:26.809Z"
     },
     {
       "id": "hackerrank-medium-simple-array-sum",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T14:51:24.413Z"
+      "lastUpdated": "2025-08-26T15:07:26.820Z"
     },
     {
       "id": "leetcode-easy-two-sum",
@@ -76,7 +76,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T14:51:24.407Z"
+      "lastUpdated": "2025-08-26T15:07:26.813Z"
     },
     {
       "id": "leetcode-medium-container-with-most-water",
@@ -92,7 +92,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T14:51:24.409Z"
+      "lastUpdated": "2025-08-26T15:07:26.815Z"
+    },
+    {
+      "id": "leetcode-medium-find-first-and-last-position-of-element-in-sorted-array",
+      "platform": "Leetcode",
+      "difficulty": "Medium",
+      "problemName": "Find First and Last Position of Element in Sorted Array",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public int[] searchRange(int[] nums, int target) {\n        int[] ans = { -1, -1 };\n        int start = search(nums, target, true);\n        int end = search(nums, target, false);\n        ans[0] = start;\n        ans[1] = end;\n        return ans;\n    }\n\n    static int search(int[] num, int target, boolean firstindex) {\n        int ans = -1;\n        int start = 0;\n        int end = num.length - 1;\n        while (start <= end) {\n            int mid = start + (end - start) / 2;\n            if (num[mid] > target) {\n                end = mid - 1;\n            } else if (num[mid] < target) {\n                start = mid + 1;\n            } else {\n                ans = mid;\n                if (firstindex) {\n                    end = mid - 1;\n                } else {\n                    start = mid + 1;\n                }\n            }\n        }\n        return ans;\n    }\n}",
+        "readme": "34. Find First and Last Position of Element in Sorted ArraySolvedMediumTopicsCompaniesGiven an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.\n\nIf target is not found in the array, return [-1, -1].\n\nYou must write an algorithm with O(log n) runtime complexity.\n\n \nExample 1:\nInput: nums = [5,7,7,8,8,10], target = 8\nOutput: [3,4]\nExample 2:\nInput: nums = [5,7,7,8,8,10], target = 6\nOutput: [-1,-1]\nExample 3:\nInput: nums = [], target = 0\nOutput: [-1,-1]\n\n \nConstraints:\n\n\n\t0 <= nums.length <= 105\n\t-109 <= nums[i] <= 109\n\tnums is a non-decreasing array.\n\t-109 <= target <= 109\n\n Seen this question in a real interview before?1/5YesNoAccepted2,853,998/6MAcceptance Rate47.3%TopicsArrayBinary SearchCompaniesSimilar QuestionsFirst Bad VersionEasyPlates Between CandlesMediumFind Target Indices After Sorting ArrayEasyDiscussion (313)Choose a typeComment💡 Discussion Rules1. Please don't post any solutions in this discussion.2. The problem discussion is for asking questions about the problem or for sharing tips - anything except for solutions.3. If you'd like to share your solution for feedback and ideas, please head to the solutions tab and post it there.Sort by:BestSatvik ShrivastavaJul 14, 2023After attempting this binary search is running through my veins. Read more36212Tasneem AyhamOct 09, 2023Guys, just for better experience to our fellow LeetCoders, if you find a problem that's ranked medium/hard and you think it should be levelled down, please refrain from writing it in the discussion section as that would demoralize our brothers/sisters. Remember, we were all in their place once!!\nThank you for your understanding! Read more4662Joe NgJan 16, 2022I sometimes get 5th percentile speed from a submission, then a 95th percentile speed on the next with the exact same code. Read more17114Moonbeam8773Apr 17, 2023I'm sorry. What is \"sorted in non-decreasing order\"? Isn't that just sorted in ascending order? Read more18714PrishaOct 09, 2023When you first encounter this question, your initial instinct might be to employ a simple O(N) solution, where you traverse the array to locate both the first and last positions of the target element. After all, it seems like a straightforward approach, right? 🤔\nHowever, here's where the plot thickens!\nGiven that the array is sorted, why not leverage this fact to your advantage and craft a logarithmic solution instead?  The term \"sorted\" practically whispers to you, suggesting the use of binary search. But how exactly do you wield this powerful technique?\n🤔 Ah, here's the twist! The main challenge arises when the element you're looking for equals nums[mid]. Is it the first occurrence or the last? 🤷‍♀️ That's the million-dollar question right there.\n✨ Now, here comes the magic trick!\nYou don't just use one binary search; you utilize two of them. 🪄 Yes, you heard that right!\nOne binary search is dedicated to finding the lower bound, and the other to discover the upper bound.\n🎯 And just like that, you've transformed a seemingly complex problem into an elegant, efficient solution. Ta-da! 🎉✨💫 Read more2337mstuebsOct 09, 2023Don't submit code that is not thoroughly tested. Make sure to have additional test cases, like\n[]\n42\n[7,8,8,8,8,8,8,8,8,8,8,9]\n7\n[7,8,8,8,8,8,8,8,8,8,8,9]\n8\n[7,8,8,8,8,8,8,8,8,8,8,9]\n10\n[1,2,2,2,2,3,4,5,5,5,5,6,7,8,9,10,11,12,12,12,12,12,13]\n2\n[-999985131,-999953607,-999953607,-999915742,-999883817,-999849817,-999822901,-999815377,-999810801,-68594,-49967,20394,114012,999969829,999973689,999975494]\n-999953607\nhttps://github.com/mquintus/l33tcode-testcase-generator/blob/main/generated/34_Find_First_and_Last_Position_of_Element_in_Sorted_Array.txt Read more616heijinganghuashengNov 16, 2013If the elements of the whole array is the same as the target, can we do it in a O(logn) time? Read more6013M Mahbubul AlamJan 19, 2023At first use binary search. When your mid value will be equal to the target, then use two different binary search on the left part and right part of the mid. Read moreTip847WizelDec 07, 2022Why in the case the nums is [1] , target is 1, the search result should be [0, 0] ? Read more349Shubham JhaNov 22, 2022previous UI was much handy Read more231123432Copyright © 2025 LeetCode. All rights reserved.",
+        "notes": "# Find First and Last Position of Element in Sorted Array\n\n          **Summary:** The code utilizes two arrays: the input `nums` array and an `ans` array to store the start and end indices of the target.  It employs a binary search algorithm (`search` function) twice: once to find the leftmost occurrence (firstindex = true) and again to find the rightmost occurrence (firstindex = false) of the target.  The `search` function iteratively narrows the search space until the target is found, adjusting the search bounds based on whether it's searching for the first or last occurrence.\n\n          - Time Complexity: O(log n). The binary search algorithm is used, which has a time complexity of O(log n), where n is the length of the input array. The algorithm performs binary search twice, but the overall time complexity remains O(log n).\n          - Space Complexity: O(1). The algorithm uses a constant amount of extra space, regardless of the input size. The space used by the `ans` array and the variables within the `search` function is constant."
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-26T15:07:26.817Z"
     },
     {
       "id": "leetcode-hard-permutation-sequence",
@@ -108,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T14:51:24.411Z"
+      "lastUpdated": "2025-08-26T15:07:26.818Z"
     }
   ]
 }
