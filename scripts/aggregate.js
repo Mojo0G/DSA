@@ -1,10 +1,23 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-// Configuration
+// Configuration - now case-insensitive
 const PLATFORMS = ['Codechef', 'Gfg', 'Leetcode', 'Hackerrank'];
 const DIFFICULTIES = ['Easy', 'Medium', 'Hard'];
 const OUTPUT_FILE = 'dashboard.json';
+
+// Helper function to find directories case-insensitively
+async function findDirectory(parentPath, targetName) {
+    try {
+        const items = await fs.readdir(parentPath);
+        const found = items.find(item => 
+            item.toLowerCase() === targetName.toLowerCase()
+        );
+        return found ? path.join(parentPath, found) : null;
+    } catch {
+        return null;
+    }
+}
 
 // Helper function to find files with specific patterns
 async function findFile(dir, patterns) {
@@ -35,34 +48,44 @@ async function readFileSafe(filePath) {
     }
 }
 
+// Helper function to generate a unique ID for each problem
+function generateProblemId(platform, difficulty, problemName) {
+    return `${platform.toLowerCase()}-${difficulty.toLowerCase()}-${problemName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+}
+
 // Main aggregation function
 async function aggregateData() {
     const dashboard = [];
+    console.log('Starting aggregation...');
+    console.log('Current working directory:', process.cwd());
+    
+    // First, let's see what directories exist in the root
+    const rootItems = await fs.readdir(process.cwd());
+    console.log('Root directory contents:', rootItems);
     
     for (const platform of PLATFORMS) {
-        const platformPath = path.join(process.cwd(), platform);
+        const platformPath = await findDirectory(process.cwd(), platform);
         
-        // Check if platform directory exists
-        try {
-            await fs.access(platformPath);
-        } catch {
+        if (!platformPath) {
             console.log(`Platform directory ${platform} not found, skipping...`);
             continue;
         }
         
+        console.log(`Found platform directory: ${platformPath}`);
+        
         for (const difficulty of DIFFICULTIES) {
-            const difficultyPath = path.join(platformPath, difficulty);
+            const difficultyPath = await findDirectory(platformPath, difficulty);
             
-            // Check if difficulty directory exists
-            try {
-                await fs.access(difficultyPath);
-            } catch {
+            if (!difficultyPath) {
                 console.log(`Difficulty directory ${platform}/${difficulty} not found, skipping...`);
                 continue;
             }
             
+            console.log(`Found difficulty directory: ${difficultyPath}`);
+            
             // Get all problem directories
             const problemDirs = await fs.readdir(difficultyPath);
+            console.log(`Problems in ${platform}/${difficulty}:`, problemDirs);
             
             for (const problemName of problemDirs) {
                 const problemPath = path.join(difficultyPath, problemName);
@@ -73,19 +96,24 @@ async function aggregateData() {
                 
                 console.log(`Processing: ${platform}/${difficulty}/${problemName}`);
                 
-                // Find the files
+                // Find the files - expanded patterns
                 const codeFile = await findFile(problemPath, [
-                    '.js', '.py', '.java', '.cpp', '.c', '.go', '.rs',
-                    'solution', 'code', 'main'
+                    '.js', '.py', '.java', '.cpp', '.c', '.go', '.rs', '.ts',
+                    'solution', 'code', 'main', 'answer', 'program'
                 ]);
                 
                 const readmeFile = await findFile(problemPath, [
-                    'readme.md', 'question.md', 'problem.md', 'readme'
+                    'readme.md', 'question.md', 'problem.md', 'readme',
+                    'README.md', 'QUESTION.md', 'PROBLEM.md', 'README'
                 ]);
                 
                 const notesFile = await findFile(problemPath, [
-                    'notes.md', 'ai-notes.md', 'ai_notes.md', 'ainotes.md'
+                    'notes.md', 'ai-notes.md', 'ai_notes.md', 'ainotes.md',
+                    'NOTES.md', 'AI-NOTES.md', 'AI_NOTES.md', 'AINOTES.md',
+                    'note.md', 'NOTE.md'
                 ]);
+                
+                console.log(`Found files - Code: ${codeFile ? 'Yes' : 'No'}, Readme: ${readmeFile ? 'Yes' : 'No'}, Notes: ${notesFile ? 'Yes' : 'No'}`);
                 
                 // Read file contents
                 const codeContent = await readFileSafe(codeFile);
@@ -98,6 +126,7 @@ async function aggregateData() {
                     const ext = path.extname(codeFile).toLowerCase();
                     const langMap = {
                         '.js': 'javascript',
+                        '.ts': 'typescript',
                         '.py': 'python',
                         '.java': 'java',
                         '.cpp': 'cpp',
@@ -108,8 +137,9 @@ async function aggregateData() {
                     language = langMap[ext] || 'unknown';
                 }
                 
-                // Create the problem object with file contents
+                // Create the problem object with unique ID
                 const problemData = {
+                    id: generateProblemId(platform, difficulty, problemName),
                     platform,
                     difficulty,
                     problemName,
@@ -119,6 +149,9 @@ async function aggregateData() {
                         readme: readmeContent,
                         notes: notesContent
                     },
+                    hasCode: !!codeContent,
+                    hasReadme: !!readmeContent,
+                    hasNotes: !!notesContent,
                     lastUpdated: new Date().toISOString()
                 };
                 
@@ -169,6 +202,14 @@ async function aggregateData() {
     
     console.log(`\nAggregation complete! Written to ${OUTPUT_FILE}`);
     console.log(`Total problems processed: ${dashboard.length}`);
+    
+    // Show summary
+    if (dashboard.length === 0) {
+        console.log('\nNo problems found. Please check:');
+        console.log('1. Directory structure matches: Platform/Difficulty/ProblemName/');
+        console.log('2. Platform names (case-insensitive): Codechef, Gfg, Leetcode, Hackerrank');
+        console.log('3. Difficulty names (case-insensitive): Easy, Medium, Hard');
+    }
 }
 
 // Run the aggregation
