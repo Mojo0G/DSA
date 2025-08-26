@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "totalProblems": 0,
-    "lastUpdated": "2025-08-26T11:00:38.202Z",
+    "totalProblems": 4,
+    "lastUpdated": "2025-08-26T11:30:01.654Z",
     "breakdown": {
       "Codechef": {
-        "total": 0,
-        "Easy": 0,
+        "total": 1,
+        "Easy": 1,
         "Medium": 0,
         "Hard": 0
       },
@@ -16,18 +16,83 @@
         "Hard": 0
       },
       "Leetcode": {
-        "total": 0,
-        "Easy": 0,
+        "total": 2,
+        "Easy": 1,
         "Medium": 0,
-        "Hard": 0
+        "Hard": 1
       },
       "Hackerrank": {
-        "total": 0,
+        "total": 1,
         "Easy": 0,
-        "Medium": 0,
+        "Medium": 1,
         "Hard": 0
       }
     }
   },
-  "problems": []
+  "problems": [
+    {
+      "id": "codechef-easy-search-an-element-in-an-array",
+      "platform": "Codechef",
+      "difficulty": "Easy",
+      "problemName": "Search an element in an array",
+      "language": "java",
+      "files": {
+        "code": "import java.util.*;\nimport java.lang.*;\nimport java.io.*;\n\nclass Codechef\n{\n\tpublic static void main (String[] args) throws java.lang.Exception\n\t{\n\t\t// your code goes here\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int x = sc.nextInt();\n        \n        boolean isfound = false;\n        \n        for (int i = 0;i < n ;i++ ){\n            int ce = sc.nextInt();\n            if(ce == x){\n                isfound = true;\n            }\n        }\n        \n        if (isfound){\n            System.out.println(\"YES\");\n        }\n        else{\n            System.out.println(\"NO\");\n        }\n        \n        sc.close();\n\t}\n}",
+        "readme": "Search an element in an array\n\nYou are given an array \n𝐴\nA of size \n𝑁\nN and an element \n𝑋\nX. Your task is to find whether the array \n𝐴\nA contains the element \n𝑋\nX or not.\n\nInput Format\nThe first line contains two space-separated integers \n𝑁\nN and \n𝑋\nX — the size of array and the element to be searched.\nThe second line contains all the elements of array \n𝐴\nA\nOutput Format\n\nOutput \"YES\" if the element \n𝑋\nX is present in \n𝐴\nA, otherwise output \"NO\".\n\nConstraints\n1\n≤\n𝑁\n≤\n10\n5\n1≤N≤10\n5\n1\n≤\n𝐴\n𝑖\n≤\n10\n5\n1≤A\ni\n\t​\n\n≤10\n5\nSample 1:\nInput\nOutput\n5 3\n7 3 5 2 1\nYES\nSample 2:\nInput\nOutput\n5 10\n7 3 5 2 1\nNO",
+        "notes": "# Search an element in an array\n\n          **Summary:** This code implements a solution using Java. It processes data through iterative operations and appears to solve the given problem efficiently.\n\n          - Time Complexity: O(n)\n          - Space Complexity: O(1)"
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-26T11:30:01.497Z"
+    },
+    {
+      "id": "hackerrank-medium-simple-array-sum",
+      "platform": "Hackerrank",
+      "difficulty": "Medium",
+      "problemName": "Simple Array Sum",
+      "language": "java",
+      "files": {
+        "code": "import java.io.*;\nimport java.math.*;\nimport java.security.*;\nimport java.text.*;\nimport java.util.*;\nimport java.util.concurrent.*;\nimport java.util.function.*;\nimport java.util.regex.*;\nimport java.util.stream.*;\nimport static java.util.stream.Collectors.joining;\nimport static java.util.stream.Collectors.toList;\n\nclass Result {\n\n    /*\n     * Complete the 'simpleArraySum' function below.\n     *\n     * The function is expected to return an INTEGER.\n     * The function accepts INTEGER_ARRAY ar as parameter.\n     */\n\n    public static int simpleArraySum(List<Integer> ar) {\n    // Write your code here\n    int sum = 0;\n    for (int num : ar) {\n        sum += num;\n    }\nreturn sum;\n    }\n\n}\n\npublic class Solution {\n    public static void main(String[] args) throws IOException {\n        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));\n        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv(\"OUTPUT_PATH\")));\n\n        int arCount = Integer.parseInt(bufferedReader.readLine().trim());\n\n        List<Integer> ar = Stream.of(bufferedReader.readLine().replaceAll(\"\\\\s+$\", \"\").split(\" \"))\n            .map(Integer::parseInt)\n            .collect(toList());\n\n        int result = Result.simpleArraySum(ar);\n\n        bufferedWriter.write(String.valueOf(result));\n        bufferedWriter.newLine();\n\n        bufferedReader.close();\n        bufferedWriter.close();\n    }\n}",
+        "readme": "Given an array of integers, find the sum of its elements.\n\nFor example, if the array , , so return .\n\nFunction Description\n\nComplete the  function with the following parameter(s):\n\n: an array of integers\n\nReturns\n\n: the sum of the array elements\n\nInput Format\n\nThe first line contains an integer, , denoting the size of the array.\nThe second line contains  space-separated integers representing the array's elements.\n\nConstraints\n\nSample Input\n\nSTDIN           Function\n-----           --------\n6               ar[] size n = 6\n1 2 3 4 10 11   ar = [1, 2, 3, 4, 10, 11]\n\n\nSample Output\n\n31\n\n\nExplanation\n\nPrint the sum of the array's elements: .",
+        "notes": "# Simple Array Sum\n\n          **Summary:** This code implements a solution using Java 15. It processes data through iterative operations and appears to solve the given problem efficiently.\n\n          - Time Complexity: O(n)\n          - Space Complexity: O(1)"
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-26T11:30:01.506Z"
+    },
+    {
+      "id": "leetcode-easy-two-sum",
+      "platform": "Leetcode",
+      "difficulty": "Easy",
+      "problemName": "Two Sum",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n         Map<Integer, Integer> mp = new HashMap<>();\n\n        for (int i = 0; i < nums.length; i++) {\n            mp.put(nums[i], i );\n        }\n        //mycode\n        int[] res = new int[2];\n\n        for (int i = 0; i < nums.length; i++) {\n            \n            int later = target - nums[i];\n            if (mp.containsKey(later) && mp.get(later) != i) {\n                res = new int[]{i, mp.get(later)};\n                break;\n            }\n        }\n\n        return res;\n    }\n}",
+        "readme": "1. Two SumSolvedEasyTopicsCompaniesHintGiven an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order.\n\n \nExample 1:\n\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n\nExample 2:\n\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n\n\nExample 3:\n\nInput: nums = [3,3], target = 6\nOutput: [0,1]\n\n\n \nConstraints:\n\n\n\t2 <= nums.length <= 104\n\t-109 <= nums[i] <= 109\n\t-109 <= target <= 109\n\tOnly one valid answer exists.\n\n\n \nFollow-up: Can you come up with an algorithm that is less than O(n2) time complexity? Seen this question in a real interview before?1/5YesNoAccepted18,506,624/32.9MAcceptance Rate56.2%TopicsArrayHash TableCompaniesHint 1A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions just for completeness. It is from these brute force solutions that you can come up with optimizations.Hint 2So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster?Hint 3The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?Similar Questions3SumMedium4SumMediumTwo Sum II - Input Array Is SortedMediumTwo Sum III - Data structure designEasySubarray Sum Equals KMediumTwo Sum IV - Input is a BSTEasyTwo Sum Less Than KEasyMax Number of K-Sum PairsMediumCount Good MealsMediumCount Number of Pairs With Absolute Difference KEasyNumber of Pairs of Strings With Concatenation Equal to TargetMediumFind All K-Distant Indices in an ArrayEasyFirst Letter to Appear TwiceEasyNumber of Excellent PairsHardNumber of Arithmetic TripletsEasyNode With Highest Edge ScoreMediumCheck Distances Between Same LettersEasyFind Subarrays With Equal SumEasyLargest Positive Integer That Exists With Its NegativeEasyNumber of Distinct AveragesEasyCount Pairs Whose Sum is Less than TargetEasyDiscussion (1.5K)Choose a typeComment💡 Discussion Rules1. Please don't post any solutions in this discussion.2. The problem discussion is for asking questions about the problem or for sharing tips - anything except for solutions.3. If you'd like to share your solution for feedback and ideas, please head to the solutions tab and post it there.Sort by:BestVinay Kumar patApr 09, 2019Hello all,\nI'm new coding and noob in using classes. why no one is writing int main() in their codes. Definetly there will be different versions in the main() i.e taking input from STDIN, passing arguments to class etc. Read more83875AlgoEngineApr 29, 2023Video visualizing how a hash table can reduce the runtime from O(n^2) to O(n):\n Read more46712winstonchiMar 10, 2016In interview, I was asked what if duplicates exists.. How do we handle this?\nMy original thought is worst case nums = [1,1,1,1] target is 2\nthen the complexity if N^2... Is it true?\nIs there any way to improve this? Read more27751CafogarN4May 24, 2024Not that easy Read more1937AlexTheGreatNov 04, 2014Can't find a better place to ask this...\nEvery time I passed a problem, it's marked with a green check mark.\nIf I want to redo all the problems for the second round, is there a way to \"reset\" all the marks? Read more16517Xu ZHANGMay 13, 2016We can see a lot of HashMap solutions using a HashMap to store the number as the key and the index as the value.\nMany people will come up the same questions that what if there have duplicate numbers in the array?\nWell, it's not a problem at all. Because in the description, it says there is exactly one solution. I will prove it here:\n\n\nSay we have three N1 in the array like this [N1, N2, N1, N3, N1], then N1 will not be part of the result with N2 or N3, since if N1 is part of the result, then we have three solutions which go against the description. N1 cannot be part of result with itself neither since then we have three solutions again. So in this case, we do not care duplicates at all.\n\n\nSo the only possible situation that the N1 can be the result is: N1 MUST only have two of them, and the target MUST be 2 * N1, then we have an array like this: [N1, N2, N1], and a target like this 2 * N1. In this case, after building up the map, N1's index will be the right most one which is 2. Then when we start from the first N1 at index 0, we do (target - N1) and get N1, and then query the N1's index in the array, which is 2, and then we can get the result which is [0, 2] with no problem.\n\n Read more1407CodeBumblebeeJun 11, 2024this is easy? im cooked Read moreFeedback792Ming YueJan 15, 2014O(n^2) I got Time Limit Exceed. Does anyone got accept by O(n^2) ? I just use binary search and finally accept. Read more5824shaguvFeb 01, 2015Sorry for the newbie question: is there any way to read the test cases for a given problem? Even after having validated it, I couldn't find how to access them.\nPS: At the moment of posting this general question, I realize I need to assign it a particular problem as a category. So I guess this is the wrong place to ask. Could you redirect me to some \"meta\" forum? Read more781Mikhail LachikhinNov 19, 2019Hello there. This is my first time solving problems on leetcode and I ran into a problem. The output of my code is [0, 1], and the output expected is [0,1]. But yet, site says im wrong. Also I see my output in \"stdout\", not in the \"Output\" line. I used \"print()\" method for output. How should I do it instead? image Read more68171234153Copyright © 2025 LeetCode. All rights reserved.",
+        "notes": "# Two Sum\n\n          **Summary:** This code implements a solution using Java. It processes data through iterative operations and appears to solve the given problem efficiently.\n\n          - Time Complexity: O(n�)\n          - Space Complexity: O(1)"
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-26T11:30:01.502Z"
+    },
+    {
+      "id": "leetcode-hard-permutation-sequence",
+      "platform": "Leetcode",
+      "difficulty": "Hard",
+      "problemName": "Permutation Sequence",
+      "language": "java",
+      "files": {
+        "code": "class Solution {\n    public String getPermutation(int n, int k) {\n        // Validation\n        int totalPermutations = factorial(n);\n        if (k < 1 || k > totalPermutations) {\n            throw new IllegalArgumentException(\n                \"k must be between 1 and \" + totalPermutations + \", got \" + k\n            );\n        }\n\n        // Prepare numbers 1..n\n        List<Integer> numbers = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            numbers.add(i);\n        }\n\n        // Precompute factorials\n        int[] facts = new int[n + 1];\n        facts[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            facts[i] = facts[i - 1] * i;\n        }\n\n        // Build the k-th permutation\n        StringBuilder permutation = new StringBuilder();\n        // Convert k to 0-based index\n        int kIndex = k - 1;\n\n        for (int pos = n; pos >= 1; pos--) {\n            int fact = facts[pos - 1];\n            int idx = kIndex / fact;\n            permutation.append(numbers.get(idx));\n            numbers.remove(idx);\n            kIndex %= fact;\n\n            // Debug info\n            System.out.println(\n                \"Select \" + permutation.charAt(permutation.length() - 1) +\n                \" from remaining: \" + numbers +\n                \" (Block size: \" + fact + \", kIndex: \" + kIndex + \")\"\n            );\n        }\n\n        return permutation.toString();\n    }\n\n    /**\n     * Computes n! (factorial).\n     */\n    private int factorial(int n) {\n        int prod = 1;\n        for (int i = 2; i <= n; i++) {\n            prod *= i;\n        }\n        return prod;\n    }\n}",
+        "readme": "60. Permutation SequenceSolvedHardTopicsCompaniesThe set [1, 2, 3, ..., n] contains a total of n! unique permutations.\n\nBy listing and labeling all of the permutations in order, we get the following sequence for n = 3:\n\n\n\t\"123\"\n\t\"132\"\n\t\"213\"\n\t\"231\"\n\t\"312\"\n\t\"321\"\n\n\nGiven n and k, return the kth permutation sequence.\n\n \nExample 1:\nInput: n = 3, k = 3\nOutput: \"213\"\nExample 2:\nInput: n = 4, k = 9\nOutput: \"2314\"\nExample 3:\nInput: n = 3, k = 1\nOutput: \"123\"\n\n \nConstraints:\n\n\n\t1 <= n <= 9\n\t1 <= k <= n!\n\n Seen this question in a real interview before?1/5YesNoAccepted501,964/993.3KAcceptance Rate50.5%TopicsMathRecursionCompaniesSimilar QuestionsNext PermutationMediumPermutationsMediumDiscussion (73)Choose a typeComment💡 Discussion Rules1. Please don't post any solutions in this discussion.2. The problem discussion is for asking questions about the problem or for sharing tips - anything except for solutions.3. If you'd like to share your solution for feedback and ideas, please head to the solutions tab and post it there.Sort by:BestPiyush RajMar 15, 2024A simple hint for this question\nIt doesnt need backtracking nor recursion to solve. You can solve it using factorials and some basic intuition really. Just generate the kth permutation directly!\nIf you need further hint here it is\nLets say i have 5 numbers [1,2,3,4,5] and n = 17 well my first thought would be, what can be the 1st digit in my permutation? If we are talking lexicographically sorted permutations then the first number will change to 2 from 1 after (4)! iterations (because there are 4 numbers after 1 in the list) but we see 4!  > 17 thus what can we conclude from this?\nTry to think about it and you would be able to come up with an algorithm to solve it without backtracking or recursion. Read moreTip603joeleetcode2018Oct 11, 2018The actual backtracking solution based on all permuations will be LTE. The actual optmized solution has no backtracking in it at all! Read more654CGKJul 02, 2023Mine actually passed all testcases. But still showing as \"Time Limit Exceeded\". Someone please explain why? The last executed input is literally showing as \"n = \" without any number, but 200/200 testcases passed Read more151JulienApr 02, 2023The discrepancy between manual testcases and submissions is pretty bad. The brute force seems to work 100% of the time when tested manually (quite comfortably) but consistently fails on the same testcases when submitted.\nI mean, it's a good thing that the brute force doesn't pass, but why do I get different results when I test that individually ? Read more143noob_2347Apr 14, 2023Can someone tell me why is this hard? Read more2714Shaik Aman SayerJun 11, 2023Hardest question i ever solved Read more12Dipanjan SahaApr 07, 2025this was the first hard question I solved all by myself :) Read more111Jinsheng ZhouAug 07, 2016Even if I ad this line:\nif(n ==8 && k == 8590) return \"26847351\";\nI still got TLE... Read more142ChandlerNov 30, 2016I use Java, so I'm just talking about java. To remove a element from a list, arrayList or a LinkedList, it takes O(n) to remove that. Of course you could implement a data structure of your own to remove a element with O(1) while maintaining the order. But if your algorithm is not O(n), please don't say it is O(n). Don't mislead other programmers. Just like the substring() function. It used to be O(1), But it is O(n) now. So please analyze the algorithm time complexity correctly. Read more73Martin ShoostermanMay 19, 2023Hint: Think about the permutations as if you are representing a number in some sort of \"factorial base\" Where the leftmost digit represents multiples of 1, then multiples of 2, then multiples of 6, then multiples of 24, etc. Now convert k to this base. There is a tiny bit more to it, but this line of thinking should get you there. Read more5212348Copyright © 2025 LeetCode. All rights reserved.",
+        "notes": "# Permutation Sequence\n\n          **Summary:** This code implements a solution using Java. It processes data through iterative operations and appears to solve the given problem efficiently.\n\n          - Time Complexity: O(n�)\n          - Space Complexity: O(1)"
+      },
+      "hasCode": true,
+      "hasReadme": true,
+      "hasNotes": true,
+      "lastUpdated": "2025-08-26T11:30:01.504Z"
+    }
+  ]
 }
