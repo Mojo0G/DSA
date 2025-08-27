@@ -1,7 +1,7 @@
 {
   "metadata": {
     "totalProblems": 7,
-    "lastUpdated": "2025-08-27T09:03:22.339Z",
+    "lastUpdated": "2025-08-27T09:04:44.442Z",
     "breakdown": {
       "Codechef": {
         "total": 1,
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.570Z"
+      "lastUpdated": "2025-08-27T09:04:44.000Z"
     },
     {
       "id": "hackerrank-medium-simple-array-sum",
@@ -60,23 +60,23 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.583Z"
+      "lastUpdated": "2025-08-27T09:04:44.013Z"
     },
     {
       "id": "leetcode-easy-two-sum",
       "platform": "Leetcode",
       "difficulty": "Easy",
       "problemName": "Two Sum",
-      "language": "java",
+      "language": "python",
       "files": {
-        "code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n         Map<Integer, Integer> mp = new HashMap<>();\n\n        for (int i = 0; i < nums.length; i++) {\n            mp.put(nums[i], i );\n        }\n        //mycode\n        int[] res = new int[2];\n\n        for (int i = 0; i < nums.length; i++) {\n            \n            int later = target - nums[i];\n            if (mp.containsKey(later) && mp.get(later) != i) {\n                res = new int[]{i, mp.get(later)};\n                break;\n            }\n        }\n\n        return res;\n    }\n}",
+        "code": "class Solution(object):\n    def twoSum(self, nums, target):\n        \"\"\"\n        :type nums: List[int]\n        :type target: int\n        :rtype: List[int]\n        \"\"\"\n        num_to_index = {}\n        \n        for i, n in enumerate(nums):\n            n2 = target - n\n            if n2 in num_to_index:\n                return [num_to_index[n2], i]\n            num_to_index[n] = i\n        \n        return []  # Return an empty list if no solution is found",
         "readme": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order.\n\n \nExample 1:\n\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n\nExample 2:\n\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n\n\nExample 3:\n\nInput: nums = [3,3], target = 6\nOutput: [0,1]\n\n\n \nConstraints:\n\n\n\t2 <= nums.length <= 104\n\t-109 <= nums[i] <= 109\n\t-109 <= target <= 109\n\tOnly one valid answer exists.\n\n\n \nFollow-up: Can you come up with an algorithm that is less than O(n2) time complexity?",
-        "notes": "Two Sum\n\n          - Summary: The code utilizes a HashMap to store each number in the input array 'nums' as a key and its index as the value.  It then iterates through the array; for each number, it checks if the complement (target - number) exists as a key in the HashMap. If the complement is found and its index differs from the current index, it means a pair summing to the target is found, and their indices are returned. Otherwise, the loop continues until a pair is found or the array is exhausted.\n\n          - Time Complexity: O(n) because the code iterates through the input array 'nums' once to populate the HashMap and then iterates through it again at most once to find the pair. HashMap operations (put and containsKey) have an average time complexity of O(1).\n          - Space Complexity: O(n) because the HashMap 'mp' stores at most n key-value pairs, where n is the length of the input array.  The space used by the 'res' array is constant."
+        "notes": "Two Sum\n\n          - Summary: This algorithm utilizes a hash map (dictionary in Python) to efficiently find two numbers within a list that sum up to a target value. It iterates through the input list, checking for each number if its complement (target - number) exists in the hash map. If found, it returns the indices of the two numbers. Otherwise, it adds the current number and its index to the hash map and continues. If no pair is found, it returns an empty list.\n\n          - Time Complexity: O(n) because the algorithm iterates through the input list once. Hash map lookups (in and assignment) take constant time on average.\n          - Space Complexity: O(n) because in the worst-case scenario, the hash map will store all the numbers from the input list, resulting in linear space usage."
       },
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.575Z"
+      "lastUpdated": "2025-08-27T09:04:44.005Z"
     },
     {
       "id": "leetcode-medium-container-with-most-water",
@@ -92,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.577Z"
+      "lastUpdated": "2025-08-27T09:04:44.007Z"
     },
     {
       "id": "leetcode-medium-find-first-and-last-position-of-element-in-sorted-array",
@@ -108,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.579Z"
+      "lastUpdated": "2025-08-27T09:04:44.008Z"
     },
     {
       "id": "leetcode-hard-median-of-two-sorted-arrays",
@@ -124,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.580Z"
+      "lastUpdated": "2025-08-27T09:04:44.010Z"
     },
     {
       "id": "leetcode-hard-permutation-sequence",
@@ -140,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-27T09:03:21.581Z"
+      "lastUpdated": "2025-08-27T09:04:44.011Z"
     }
   ]
 }
