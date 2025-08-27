@@ -1,7 +1,7 @@
 {
   "metadata": {
     "totalProblems": 7,
-    "lastUpdated": "2025-08-26T17:14:48.234Z",
+    "lastUpdated": "2025-08-27T09:03:22.339Z",
     "breakdown": {
       "Codechef": {
         "total": 1,
@@ -44,7 +44,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.064Z"
+      "lastUpdated": "2025-08-27T09:03:21.570Z"
     },
     {
       "id": "hackerrank-medium-simple-array-sum",
@@ -60,7 +60,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.077Z"
+      "lastUpdated": "2025-08-27T09:03:21.583Z"
     },
     {
       "id": "leetcode-easy-two-sum",
@@ -71,12 +71,12 @@
       "files": {
         "code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n         Map<Integer, Integer> mp = new HashMap<>();\n\n        for (int i = 0; i < nums.length; i++) {\n            mp.put(nums[i], i );\n        }\n        //mycode\n        int[] res = new int[2];\n\n        for (int i = 0; i < nums.length; i++) {\n            \n            int later = target - nums[i];\n            if (mp.containsKey(later) && mp.get(later) != i) {\n                res = new int[]{i, mp.get(later)};\n                break;\n            }\n        }\n\n        return res;\n    }\n}",
         "readme": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order.\n\n \nExample 1:\n\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n\nExample 2:\n\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n\n\nExample 3:\n\nInput: nums = [3,3], target = 6\nOutput: [0,1]\n\n\n \nConstraints:\n\n\n\t2 <= nums.length <= 104\n\t-109 <= nums[i] <= 109\n\t-109 <= target <= 109\n\tOnly one valid answer exists.\n\n\n \nFollow-up: Can you come up with an algorithm that is less than O(n2) time complexity?",
-        "notes": "# Two Sum\n\n          **Summary:** This Java code uses a HashMap to solve the Two Sum problem. It first populates the HashMap with array elements as keys and their indices as values. Then, it iterates through the array; for each element, it checks if the complement (target - element) exists in the HashMap. If the complement exists and its index is different from the current element's index, it means a pair adding up to the target has been found. The indices of this pair are returned. Otherwise, the loop continues until a pair is found or the loop completes.\n\n          - Time Complexity: O(n) because the code iterates through the input array once to populate the HashMap and then iterates through it again at most once to find the pair.  HashMap operations (put and containsKey) take constant time on average.\n          - Space Complexity: O(n) because the HashMap stores at most n key-value pairs, where n is the length of the input array. The space used by other variables is constant."
+        "notes": "Two Sum\n\n          - Summary: The code utilizes a HashMap to store each number in the input array 'nums' as a key and its index as the value.  It then iterates through the array; for each number, it checks if the complement (target - number) exists as a key in the HashMap. If the complement is found and its index differs from the current index, it means a pair summing to the target is found, and their indices are returned. Otherwise, the loop continues until a pair is found or the array is exhausted.\n\n          - Time Complexity: O(n) because the code iterates through the input array 'nums' once to populate the HashMap and then iterates through it again at most once to find the pair. HashMap operations (put and containsKey) have an average time complexity of O(1).\n          - Space Complexity: O(n) because the HashMap 'mp' stores at most n key-value pairs, where n is the length of the input array.  The space used by the 'res' array is constant."
       },
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.069Z"
+      "lastUpdated": "2025-08-27T09:03:21.575Z"
     },
     {
       "id": "leetcode-medium-container-with-most-water",
@@ -92,7 +92,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.071Z"
+      "lastUpdated": "2025-08-27T09:03:21.577Z"
     },
     {
       "id": "leetcode-medium-find-first-and-last-position-of-element-in-sorted-array",
@@ -108,7 +108,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.072Z"
+      "lastUpdated": "2025-08-27T09:03:21.579Z"
     },
     {
       "id": "leetcode-hard-median-of-two-sorted-arrays",
@@ -124,7 +124,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.074Z"
+      "lastUpdated": "2025-08-27T09:03:21.580Z"
     },
     {
       "id": "leetcode-hard-permutation-sequence",
@@ -140,7 +140,7 @@
       "hasCode": true,
       "hasReadme": true,
       "hasNotes": true,
-      "lastUpdated": "2025-08-26T17:14:48.075Z"
+      "lastUpdated": "2025-08-27T09:03:21.581Z"
     }
   ]
 }
