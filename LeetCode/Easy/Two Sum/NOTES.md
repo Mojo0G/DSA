@@ -1,8 +1,8 @@
 
           Two Sum
 
-          - Summary: The code utilizes a HashMap to store each number in the input array 'nums' as a key and its index as the value.  It then iterates through the array; for each number, it checks if the complement (target - number) exists as a key in the HashMap. If the complement is found and its index differs from the current index, it means a pair summing to the target is found, and their indices are returned. Otherwise, the loop continues until a pair is found or the array is exhausted.
+          - Summary: This algorithm utilizes a hash map (dictionary in Python) to efficiently find two numbers within a list that sum up to a target value. It iterates through the input list, checking for each number if its complement (target - number) exists in the hash map. If found, it returns the indices of the two numbers. Otherwise, it adds the current number and its index to the hash map and continues. If no pair is found, it returns an empty list.
 
-          - Time Complexity: O(n) because the code iterates through the input array 'nums' once to populate the HashMap and then iterates through it again at most once to find the pair. HashMap operations (put and containsKey) have an average time complexity of O(1).
-          - Space Complexity: O(n) because the HashMap 'mp' stores at most n key-value pairs, where n is the length of the input array.  The space used by the 'res' array is constant.
+          - Time Complexity: O(n) because the algorithm iterates through the input list once. Hash map lookups (in and assignment) take constant time on average.
+          - Space Complexity: O(n) because in the worst-case scenario, the hash map will store all the numbers from the input list, resulting in linear space usage.
           
