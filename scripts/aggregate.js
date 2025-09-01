@@ -48,6 +48,35 @@ async function readFileSafe(filePath) {
     }
 }
 
+// Helper function to get file modification time
+async function getFileModTime(filePath) {
+    try {
+        if (!filePath) return null;
+        const stats = await fs.stat(filePath);
+        return stats.mtime;
+    } catch (error) {
+        return null;
+    }
+}
+
+// Helper function to get the most recent modification time from multiple files
+async function getMostRecentModTime(filePaths) {
+    const modTimes = await Promise.all(
+        filePaths.map(filePath => getFileModTime(filePath))
+    );
+    
+    const validTimes = modTimes.filter(time => time !== null);
+    
+    if (validTimes.length === 0) {
+        return new Date(); // Fallback to current time if no valid times
+    }
+    
+    // Return the most recent modification time
+    return validTimes.reduce((latest, current) => 
+        current > latest ? current : latest
+    );
+}
+
 // Helper function to generate a unique ID for each problem
 function generateProblemId(platform, difficulty, problemName) {
     return `${platform.toLowerCase()}-${difficulty.toLowerCase()}-${problemName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
@@ -120,6 +149,13 @@ async function aggregateData() {
                 const readmeContent = await readFileSafe(readmeFile);
                 const notesContent = await readFileSafe(notesFile);
                 
+                // Get the most recent modification time from all files
+                const lastModified = await getMostRecentModTime([
+                    codeFile,
+                    readmeFile,
+                    notesFile
+                ].filter(Boolean)); // Filter out null/undefined values
+                
                 // Determine code language from file extension
                 let language = 'unknown';
                 if (codeFile) {
@@ -152,7 +188,7 @@ async function aggregateData() {
                     hasCode: !!codeContent,
                     hasReadme: !!readmeContent,
                     hasNotes: !!notesContent,
-                    lastUpdated: new Date().toISOString()
+                    lastUpdated: lastModified.toISOString()
                 };
                 
                 dashboard.push(problemData);
